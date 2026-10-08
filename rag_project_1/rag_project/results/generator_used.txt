@@ -1,0 +1,1 @@
+OFFLINE extractive generator (no LLM configured)

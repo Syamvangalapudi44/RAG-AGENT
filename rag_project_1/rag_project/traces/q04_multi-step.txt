@@ -1,0 +1,21 @@
+QUESTION: What is the total per-diem allowance in USD for a 4-day international trip?
+FAULTS: none
+
+step 1  THOUGHT: Need the international per-diem from policy.
+        ACTION: lookup_policy {"query": "international travel per-diem"}
+        OBS: {"results": [{"file": "travel_policy_2024.md", "header": "TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)", "text": "3.2 International travel per-diem is INR 9,000 per day.", "source_excerpt": "3.2 International travel per-diem is INR 9,000 per day.", "score": 0.628}, {"file": "travel_policy_2
+step 2  THOUGHT: Compute total.
+        ACTION: calculator {"expression": "4*9000"}
+        OBS: {"result": 36000}
+step 3  THOUGHT: Convert to USD.
+        ACTION: convert_currency {"amount": 36000, "from": "INR", "to": "USD"}
+        OBS: {"result": 433.73, "rate_inr_per_usd": 83.0}
+
+TOOL CALL LOG: lookup_policy#1[ok]ok; calculator#1[ok]ok; convert_currency#1[ok]ok
+
+VERIFICATION 1: PASS  draft='The total per-diem allowance is USD 433.73 (INR 36,000 at 83 INR per USD).'
+   issues=[]
+
+DRAFT ANSWER (before verification): The total per-diem allowance is USD 433.73 (INR 36,000 at 83 INR per USD).
+FINAL ANSWER: The total per-diem allowance is USD 433.73 (INR 36,000 at 83 INR per USD).
+TERMINATED BY: finish  (llm steps=4)

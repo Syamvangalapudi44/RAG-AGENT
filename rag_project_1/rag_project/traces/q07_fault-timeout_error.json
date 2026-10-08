@@ -1,0 +1,153 @@
+{
+  "question": "What is the total per-diem allowance in USD for a 3-day international trip?",
+  "final_answer": "The total per-diem allowance is USD 325.3 (INR 27,000 at 83 INR per USD).",
+  "draft_answer": "The total per-diem allowance is USD 325.3 (INR 27,000 at 83 INR per USD).",
+  "terminated_by": "finish",
+  "llm_steps": 4,
+  "steps": [
+    {
+      "n": 1,
+      "thought": "Need the international per-diem from policy.",
+      "action": "lookup_policy",
+      "input": {
+        "query": "international travel per-diem"
+      },
+      "ok": true,
+      "obs": "{\"results\": [{\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"source_excerpt\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"score\": 0.628}, {\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"source_excerpt\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"score\": 0.421}], \"notes\": [\"travel_policy_2019.md (effective 1 Apr 2019) is superseded by travel_policy_2024.md (effective 1 Jan 2024); answer uses the version in force on 8 Oct 2026.\"]}",
+      "msg_index": 1
+    },
+    {
+      "n": 2,
+      "thought": "Compute total.",
+      "action": "calculator",
+      "input": {
+        "expression": "3*9000"
+      },
+      "ok": true,
+      "obs": "{\"result\": 27000}",
+      "msg_index": 3
+    },
+    {
+      "n": 3,
+      "thought": "Convert to USD.",
+      "action": "convert_currency",
+      "input": {
+        "amount": 27000,
+        "from": "INR",
+        "to": "USD"
+      },
+      "ok": true,
+      "obs": "{\"result\": 325.3, \"rate_inr_per_usd\": 83.0}",
+      "msg_index": 5
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "lookup_policy",
+      "call_no": 1,
+      "injected": "timeout",
+      "args": {
+        "query": "international travel per-diem"
+      },
+      "ok": false,
+      "obs": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    },
+    {
+      "tool": "lookup_policy",
+      "call_no": 2,
+      "injected": "ok",
+      "args": {
+        "query": "international travel per-diem"
+      },
+      "ok": true,
+      "obs": "{\"results\": [{\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"source_excerpt\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"score\": 0.628}, {\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"source_excerpt\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"score\": 0.421}], \"notes\": [\"travel_policy_2019.md (effective 1 Apr 2019) is superseded by travel_policy_2024.md (effective 1 Jan 2024); answer uses the version in force on 8 Oct 2026.\"]}"
+    },
+    {
+      "tool": "calculator",
+      "call_no": 1,
+      "injected": "error",
+      "args": {
+        "expression": "3*9000"
+      },
+      "ok": false,
+      "obs": "ERROR: 503 Service Unavailable"
+    },
+    {
+      "tool": "calculator",
+      "call_no": 2,
+      "injected": "ok",
+      "args": {
+        "expression": "3*9000"
+      },
+      "ok": true,
+      "obs": "{\"result\": 27000}"
+    },
+    {
+      "tool": "convert_currency",
+      "call_no": 1,
+      "injected": "timeout",
+      "args": {
+        "amount": 27000,
+        "from": "INR",
+        "to": "USD"
+      },
+      "ok": false,
+      "obs": "ERROR: TIMEOUT - no response from convert_currency within 0.15s"
+    },
+    {
+      "tool": "convert_currency",
+      "call_no": 2,
+      "injected": "ok",
+      "args": {
+        "amount": 27000,
+        "from": "INR",
+        "to": "USD"
+      },
+      "ok": true,
+      "obs": "{\"result\": 325.3, \"rate_inr_per_usd\": 83.0}"
+    }
+  ],
+  "events": [
+    {
+      "type": "retry",
+      "tool": "lookup_policy",
+      "attempt": 1,
+      "injected": "timeout",
+      "reason": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    },
+    {
+      "type": "retry",
+      "tool": "calculator",
+      "attempt": 1,
+      "injected": "error",
+      "reason": "ERROR: 503 Service Unavailable"
+    },
+    {
+      "type": "retry",
+      "tool": "convert_currency",
+      "attempt": 1,
+      "injected": "timeout",
+      "reason": "ERROR: TIMEOUT - no response from convert_currency within 0.15s"
+    }
+  ],
+  "verifications": [
+    {
+      "passed": true,
+      "issues": [],
+      "auditor_raw": "{\"verdict\": \"pass\", \"issues\": []}",
+      "layer_a": 0,
+      "layer_b": 0,
+      "draft": "The total per-diem allowance is USD 325.3 (INR 27,000 at 83 INR per USD)."
+    }
+  ],
+  "faults": "lookup_policy#1=timeout; calculator#1=error; convert_currency#1=timeout",
+  "verification_fired": false,
+  "verification_changed_answer": false,
+  "qid": 7,
+  "category": "fault:timeout+error",
+  "gold": "325\\.3",
+  "correct": true,
+  "correct_without_verification": true,
+  "effect": "none",
+  "llm": "MOCK (scripted planner, not an LLM)"
+}

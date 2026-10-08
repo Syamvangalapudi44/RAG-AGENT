@@ -1,0 +1,15 @@
+QUESTION: What is the international travel per-diem?
+FAULTS: none
+
+step 1  THOUGHT: Policy fact -> lookup.
+        ACTION: lookup_policy {"query": "What is the international travel per-diem?"}
+        OBS: {"results": [{"file": "travel_policy_2024.md", "header": "TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)", "text": "3.2 International travel per-diem is INR 9,000 per day.", "source_excerpt": "3.2 International travel per-diem is INR 9,000 per day.", "score": 0.628}, {"file": "travel_policy_2
+
+TOOL CALL LOG: lookup_policy#1[ok]ok
+
+VERIFICATION 1: PASS  draft='3.2 International travel per-diem is INR 9,000 per day.'
+   issues=[]
+
+DRAFT ANSWER (before verification): 3.2 International travel per-diem is INR 9,000 per day.
+FINAL ANSWER: 3.2 International travel per-diem is INR 9,000 per day.
+TERMINATED BY: finish  (llm steps=2)

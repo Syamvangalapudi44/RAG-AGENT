@@ -1,0 +1,53 @@
+{
+  "question": "What is 18% GST on INR 12,500?",
+  "final_answer": "GST at 18% on INR 12,500 is INR 2,250.",
+  "draft_answer": "GST at 18% on INR 12,500 is INR 2,250.",
+  "terminated_by": "finish",
+  "llm_steps": 2,
+  "steps": [
+    {
+      "n": 1,
+      "thought": "Percentage arithmetic -> calculator.",
+      "action": "calculator",
+      "input": {
+        "expression": "12,500*18/100"
+      },
+      "ok": true,
+      "obs": "{\"result\": 2250}",
+      "msg_index": 1
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "calculator",
+      "call_no": 1,
+      "injected": "ok",
+      "args": {
+        "expression": "12,500*18/100"
+      },
+      "ok": true,
+      "obs": "{\"result\": 2250}"
+    }
+  ],
+  "events": [],
+  "verifications": [
+    {
+      "passed": true,
+      "issues": [],
+      "auditor_raw": "{\"verdict\": \"pass\", \"issues\": []}",
+      "layer_a": 0,
+      "layer_b": 0,
+      "draft": "GST at 18% on INR 12,500 is INR 2,250."
+    }
+  ],
+  "faults": "none",
+  "verification_fired": false,
+  "verification_changed_answer": false,
+  "qid": 2,
+  "category": "simple",
+  "gold": "2250",
+  "correct": true,
+  "correct_without_verification": true,
+  "effect": "none",
+  "llm": "MOCK (scripted planner, not an LLM)"
+}

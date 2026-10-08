@@ -1,0 +1,4 @@
+LLM: MOCK (scripted planner, not an LLM)
+Stress: ON 82/90, OFF 57/90
+verify=True: correct=82, honest_failure=8, SILENT_WRONG=0
+verify=False: correct=57, honest_failure=2, SILENT_WRONG=31

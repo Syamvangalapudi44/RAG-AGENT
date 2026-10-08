@@ -1,0 +1,95 @@
+{
+  "question": "What is the international travel per-diem?",
+  "final_answer": "I could not complete this request: the lookup_policy tool was unavailable (ERROR: lookup_policy unavailable after 3 attempts (last: ERR).",
+  "draft_answer": "I could not complete this request: the lookup_policy tool was unavailable (ERROR: lookup_policy unavailable after 3 attempts (last: ERR).",
+  "terminated_by": "finish",
+  "llm_steps": 2,
+  "steps": [
+    {
+      "n": 1,
+      "thought": "Policy fact -> lookup.",
+      "action": "lookup_policy",
+      "input": {
+        "query": "What is the international travel per-diem?"
+      },
+      "ok": false,
+      "obs": "ERROR: lookup_policy unavailable after 3 attempts (last: ERROR: TIMEOUT - no response from lookup_policy within 0.15s)",
+      "msg_index": 1
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "lookup_policy",
+      "call_no": 1,
+      "injected": "timeout",
+      "args": {
+        "query": "What is the international travel per-diem?"
+      },
+      "ok": false,
+      "obs": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    },
+    {
+      "tool": "lookup_policy",
+      "call_no": 2,
+      "injected": "timeout",
+      "args": {
+        "query": "What is the international travel per-diem?"
+      },
+      "ok": false,
+      "obs": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    },
+    {
+      "tool": "lookup_policy",
+      "call_no": 3,
+      "injected": "timeout",
+      "args": {
+        "query": "What is the international travel per-diem?"
+      },
+      "ok": false,
+      "obs": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    }
+  ],
+  "events": [
+    {
+      "type": "retry",
+      "tool": "lookup_policy",
+      "attempt": 1,
+      "injected": "timeout",
+      "reason": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    },
+    {
+      "type": "retry",
+      "tool": "lookup_policy",
+      "attempt": 2,
+      "injected": "timeout",
+      "reason": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    },
+    {
+      "type": "retry",
+      "tool": "lookup_policy",
+      "attempt": 3,
+      "injected": "timeout",
+      "reason": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"
+    }
+  ],
+  "verifications": [
+    {
+      "passed": true,
+      "issues": [],
+      "auditor_raw": "{\"verdict\": \"pass\", \"issues\": []}",
+      "layer_a": 0,
+      "layer_b": 0,
+      "draft": "I could not complete this request: the lookup_policy tool was unavailable (ERROR: lookup_policy unavailable after 3 attempts (last: ERR)."
+    }
+  ],
+  "faults": "lookup_policy=ALWAYS timeout",
+  "verification_fired": false,
+  "verification_changed_answer": false,
+  "qid": 10,
+  "category": "fault:tool-down",
+  "gold": "could not|unable|unavailable",
+  "correct": true,
+  "correct_without_verification": true,
+  "effect": "none",
+  "llm": "MOCK (scripted planner, not an LLM)"
+}

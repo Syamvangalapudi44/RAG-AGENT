@@ -1,0 +1,18 @@
+QUESTION: What is the international travel per-diem?
+FAULTS: lookup_policy=ALWAYS timeout
+
+step 1  THOUGHT: Policy fact -> lookup.
+        ACTION: lookup_policy {"query": "What is the international travel per-diem?"}
+        OBS: ERROR: lookup_policy unavailable after 3 attempts (last: ERROR: TIMEOUT - no response from lookup_policy within 0.15s)
+
+TOOL CALL LOG: lookup_policy#1[timeout]FAIL; lookup_policy#2[timeout]FAIL; lookup_policy#3[timeout]FAIL
+
+EVENT: {"type": "retry", "tool": "lookup_policy", "attempt": 1, "injected": "timeout", "reason": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"}
+EVENT: {"type": "retry", "tool": "lookup_policy", "attempt": 2, "injected": "timeout", "reason": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"}
+EVENT: {"type": "retry", "tool": "lookup_policy", "attempt": 3, "injected": "timeout", "reason": "ERROR: TIMEOUT - no response from lookup_policy within 0.15s"}
+VERIFICATION 1: PASS  draft='I could not complete this request: the lookup_policy tool was unavailable (ERROR: lookup_policy unavailable after 3 attempts (last: ERR).'
+   issues=[]
+
+DRAFT ANSWER (before verification): I could not complete this request: the lookup_policy tool was unavailable (ERROR: lookup_policy unavailable after 3 attempts (last: ERR).
+FINAL ANSWER: I could not complete this request: the lookup_policy tool was unavailable (ERROR: lookup_policy unavailable after 3 attempts (last: ERR).
+TERMINATED BY: finish  (llm steps=2)

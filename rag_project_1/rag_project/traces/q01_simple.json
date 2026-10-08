@@ -1,0 +1,53 @@
+{
+  "question": "What is the international travel per-diem?",
+  "final_answer": "3.2 International travel per-diem is INR 9,000 per day.",
+  "draft_answer": "3.2 International travel per-diem is INR 9,000 per day.",
+  "terminated_by": "finish",
+  "llm_steps": 2,
+  "steps": [
+    {
+      "n": 1,
+      "thought": "Policy fact -> lookup.",
+      "action": "lookup_policy",
+      "input": {
+        "query": "What is the international travel per-diem?"
+      },
+      "ok": true,
+      "obs": "{\"results\": [{\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"source_excerpt\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"score\": 0.628}, {\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"source_excerpt\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"score\": 0.421}], \"notes\": [\"travel_policy_2019.md (effective 1 Apr 2019) is superseded by travel_policy_2024.md (effective 1 Jan 2024); answer uses the version in force on 8 Oct 2026.\"]}",
+      "msg_index": 1
+    }
+  ],
+  "tool_calls": [
+    {
+      "tool": "lookup_policy",
+      "call_no": 1,
+      "injected": "ok",
+      "args": {
+        "query": "What is the international travel per-diem?"
+      },
+      "ok": true,
+      "obs": "{\"results\": [{\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"source_excerpt\": \"3.2 International travel per-diem is INR 9,000 per day.\", \"score\": 0.628}, {\"file\": \"travel_policy_2024.md\", \"header\": \"TRAVEL AND EXPENSE POLICY (Effective 01 January 2024)\", \"text\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"source_excerpt\": \"3.1 Domestic travel per-diem is INR 3,200 per day.\", \"score\": 0.421}], \"notes\": [\"travel_policy_2019.md (effective 1 Apr 2019) is superseded by travel_policy_2024.md (effective 1 Jan 2024); answer uses the version in force on 8 Oct 2026.\"]}"
+    }
+  ],
+  "events": [],
+  "verifications": [
+    {
+      "passed": true,
+      "issues": [],
+      "auditor_raw": "{\"verdict\": \"pass\", \"issues\": []}",
+      "layer_a": 0,
+      "layer_b": 0,
+      "draft": "3.2 International travel per-diem is INR 9,000 per day."
+    }
+  ],
+  "faults": "none",
+  "verification_fired": false,
+  "verification_changed_answer": false,
+  "qid": 1,
+  "category": "simple",
+  "gold": "9000",
+  "correct": true,
+  "correct_without_verification": true,
+  "effect": "none",
+  "llm": "MOCK (scripted planner, not an LLM)"
+}
